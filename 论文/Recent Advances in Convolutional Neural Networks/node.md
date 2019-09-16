@@ -11,6 +11,7 @@
     >答：$\widetilde{\mathcal{F}}(X)=\widetilde{\mathcal{F}}\left(\text { Shift }_{\Delta h, \Delta w}(X)\right) \quad \forall(\Delta h, \Delta w)$， 输入在$(\Delta h, \Delta w)$变化，不改变最后的结果。
 
     大多数现代的卷积网络是不具有平移不变性的（如上所示，右边是作者提出的方法BlurPool），而不具有平移不变性的原因是因为maxpooling，strided-convolution以及average-pooling这些下采样方法忽略了抽样定理
+    
 
 - 平铺卷积网络 Tiled Convolution $\quad$[参考1](https://blog.csdn.net/xiao_jiang2012/article/details/9349955) && [2](https://blog.csdn.net/zhq9695/article/details/84959472)
 
@@ -19,3 +20,32 @@
 -  [空洞卷积 Dilated Convolution](https://www.jianshu.com/p/f743bd9041b3)
 
 - [Network In Network——卷积神经网络的革新](https://www.cnblogs.com/yinheyi/p/6978223.html)
+
+- [ Inception Module / GoogleNet]()
+-  1×1卷积
+   -  作用1：在相同尺寸的感受野中叠加更多的卷积，能提取到更丰富的特征。这个观点来自于Network in Network(NIN, https://arxiv.org/pdf/1312.4400.pdf)，图1里三个1x1卷积都起到了该作用
+   -  作用2：使用1x1卷积进行降维，降低了计算复杂度。
+
+- [Inception Module](https://www.cnblogs.com/leebxo/p/10315490.html)
+  - 1 × 1 卷积
+  - 多个尺寸上进行卷积再聚合（稀疏矩阵分解）
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
