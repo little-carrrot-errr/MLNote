@@ -1,38 +1,38 @@
 <!-- TOC -->
 
 - [**Convolutional Layer**](#convolutional-layer)
-  - [**广义线性模型**](#%e5%b9%bf%e4%b9%89%e7%ba%bf%e6%80%a7%e6%a8%a1%e5%9e%8b)
-  - [**关于 CNN对图像特征的 位移、尺度、形变不变性的理解**](#%e5%85%b3%e4%ba%8e-cnn%e5%af%b9%e5%9b%be%e5%83%8f%e7%89%b9%e5%be%81%e7%9a%84-%e4%bd%8d%e7%a7%bb%e5%b0%ba%e5%ba%a6%e5%bd%a2%e5%8f%98%e4%b8%8d%e5%8f%98%e6%80%a7%e7%9a%84%e7%90%86%e8%a7%a3)
-  - [**shit-invariance $\quad$ 参考视频**](#shit-invariance-quad-%e5%8f%82%e8%80%83%e8%a7%86%e9%a2%91)
-  - [**平铺卷积网络 Tiled Convolution** $\quad$参考1 && 2](#%e5%b9%b3%e9%93%ba%e5%8d%b7%e7%a7%af%e7%bd%91%e7%bb%9c-tiled-convolution-quad%e5%8f%82%e8%80%831--2)
-  - [**图像卷积与反卷积 Transposed Convolution $\quad$ CNN中的卷积和反卷积**](#%e5%9b%be%e5%83%8f%e5%8d%b7%e7%a7%af%e4%b8%8e%e5%8f%8d%e5%8d%b7%e7%a7%af-transposed-convolution-quad-cnn%e4%b8%ad%e7%9a%84%e5%8d%b7%e7%a7%af%e5%92%8c%e5%8f%8d%e5%8d%b7%e7%a7%af)
-  - [**空洞卷积 Dilated Convolution**](#%e7%a9%ba%e6%b4%9e%e5%8d%b7%e7%a7%af-dilated-convolution)
-  - [**Network In Network——卷积神经网络的革新**](#network-in-network%e5%8d%b7%e7%a7%af%e7%a5%9e%e7%bb%8f%e7%bd%91%e7%bb%9c%e7%9a%84%e9%9d%a9%e6%96%b0)
-  - [**[ Inception Module / GoogleNet]()**](#inception-module--googlenet)
-  - [**1×1卷积**](#1%c3%971%e5%8d%b7%e7%a7%af)
-  - [**Inception Module**](#inception-module)
+    - [**广义线性模型**](#%e5%b9%bf%e4%b9%89%e7%ba%bf%e6%80%a7%e6%a8%a1%e5%9e%8b)
+    - [**关于 CNN对图像特征的 位移、尺度、形变不变性的理解**](#%e5%85%b3%e4%ba%8e-cnn%e5%af%b9%e5%9b%be%e5%83%8f%e7%89%b9%e5%be%81%e7%9a%84-%e4%bd%8d%e7%a7%bb%e5%b0%ba%e5%ba%a6%e5%bd%a2%e5%8f%98%e4%b8%8d%e5%8f%98%e6%80%a7%e7%9a%84%e7%90%86%e8%a7%a3)
+    - [**shit-invariance $\quad$ 参考视频**](#shit-invariance-quad-%e5%8f%82%e8%80%83%e8%a7%86%e9%a2%91)
+    - [**平铺卷积网络 Tiled Convolution** $\quad$参考1 && 2](#%e5%b9%b3%e9%93%ba%e5%8d%b7%e7%a7%af%e7%bd%91%e7%bb%9c-tiled-convolution-quad%e5%8f%82%e8%80%831--2)
+    - [**图像卷积与反卷积 Transposed Convolution $\quad$ CNN中的卷积和反卷积**](#%e5%9b%be%e5%83%8f%e5%8d%b7%e7%a7%af%e4%b8%8e%e5%8f%8d%e5%8d%b7%e7%a7%af-transposed-convolution-quad-cnn%e4%b8%ad%e7%9a%84%e5%8d%b7%e7%a7%af%e5%92%8c%e5%8f%8d%e5%8d%b7%e7%a7%af)
+    - [**空洞卷积 Dilated Convolution**](#%e7%a9%ba%e6%b4%9e%e5%8d%b7%e7%a7%af-dilated-convolution)
+    - [**Network In Network——卷积神经网络的革新**](#network-in-network%e5%8d%b7%e7%a7%af%e7%a5%9e%e7%bb%8f%e7%bd%91%e7%bb%9c%e7%9a%84%e9%9d%a9%e6%96%b0)
+    - [**[ Inception Module / GoogleNet]()**](#inception-module--googlenet)
+    - [**1×1卷积**](#1%c3%971%e5%8d%b7%e7%a7%af)
+    - [**Inception Module**](#inception-module)
 - [**Pooling Layer**](#pooling-layer)
-  - [**L_p Pooling**](#lp-pooling)
-  - [<b>Mixed Pooling</b>](#bmixed-poolingb)
-  - [<b>Stochastic Pooling</b>](#bstochastic-poolingb)
-  - [<b>Spectral Pooling</b>](#bspectral-poolingb)
-  - [**Spatial Pyramid Pooling**](#spatial-pyramid-pooling)
-  - [<b>Multi-scale Orderless Pooling</b>](#bmulti-scale-orderless-poolingb)
-  - [**VLAD && BoW && Fisher Vector && Global CNN**](#vlad--bow--fisher-vector--global-cnn)
+    - [**L_p Pooling**](#lp-pooling)
+    - [<b>Mixed Pooling</b>](#bmixed-poolingb)
+    - [<b>Stochastic Pooling</b>](#bstochastic-poolingb)
+    - [<b>Spectral Pooling</b>](#bspectral-poolingb)
+    - [**Spatial Pyramid Pooling**](#spatial-pyramid-pooling)
+    - [<b>Multi-scale Orderless Pooling</b>](#bmulti-scale-orderless-poolingb)
+    - [**VLAD && BoW && Fisher Vector && Global CNN**](#vlad--bow--fisher-vector--global-cnn)
 - [**Activation Function**](#activation-function)
-  - [**激活函数的饱和性**](#%e6%bf%80%e6%b4%bb%e5%87%bd%e6%95%b0%e7%9a%84%e9%a5%b1%e5%92%8c%e6%80%a7)
-  - [**ReLU**](#relu)
-  - [**Leaky ReLU**](#leaky-relu)
-  - [**Parametric ReLU**](#parametric-relu)
-  - [**Randomized ReLU**](#randomized-relu)
-  - [**ELU**](#elu)
-  - [**Maxout**](#maxout)
-  - [**Probout**](#probout)
-  - [**sigmoid && tanh**](#sigmoid--tanh)
+    - [**激活函数的饱和性**](#%e6%bf%80%e6%b4%bb%e5%87%bd%e6%95%b0%e7%9a%84%e9%a5%b1%e5%92%8c%e6%80%a7)
+    - [**ReLU**](#relu)
+    - [**Leaky ReLU**](#leaky-relu)
+    - [**Parametric ReLU**](#parametric-relu)
+    - [**Randomized ReLU**](#randomized-relu)
+    - [**ELU**](#elu)
+    - [**Maxout**](#maxout)
+    - [**Probout**](#probout)
+    - [**sigmoid && tanh**](#sigmoid--tanh)
 
 <!-- /TOC -->
 
-## **Convolutional Layer**
+# **Convolutional Layer**
 ### **[广义线性模型](https://blog.csdn.net/weixin_37140379/article/details/82289704)**
 
 ### **[关于 CNN对图像特征的 位移、尺度、形变不变性的理解](https://blog.csdn.net/voxel_grid/article/details/79275637)**
@@ -70,7 +70,7 @@
     ![](img\inception&#32;module1.png)
   - 模型的最后会选通过一个AvgPool层来处理最终的feature maps，然后再由FC层汇总生成1000个输出，进而由Softmax来得到1000类的概率分布
 
-## **Pooling Layer**
+# **Pooling Layer**
 
 ### **L_p Pooling**
   
@@ -137,7 +137,7 @@ performs better than max pooling and average pooling.
 
 
 
-## **Activation Function**
+# **Activation Function**
 ### **激活函数的饱和性**
 - 当一个激活函数$h(x)$满足 $\quad lim_{n\rArr+\infty}h'(x) =0$时我们称之为右饱
 - 当一个激活函数$h(x)$满足 $\quad lim_{n\rArr-\infty}h'(x) =0$时我们称之为左饱和
