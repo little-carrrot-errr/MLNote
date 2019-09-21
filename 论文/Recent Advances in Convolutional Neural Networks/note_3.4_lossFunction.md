@@ -29,7 +29,7 @@ $当y^{(i)}=j时，\sigma(y^{(i)},j)=1；否则\sigma(y^{(i)},j)=-1$。
 ## **Softmax Loss**
 softmax loss 常用于多分类问题，它将预测转。化为非负值，并将它们标准化得到对应所有类别的一个概率分布
 > $p^{(i)}_j = e^{z^{(i)}_j} / \sum^K_{l=1} e^{z^{(i)}_l} \qquad$
-> 
+> 0
 > $z^{(i)}_j通常是一个密集连接层的激活输出，可以写为z^{(i)}_j=w^T_ja^{(i)}+b_j$
 
 > $L_{softmax} = - \frac{1}{N}[\sum^N_{i=1}\sum^K_{j=1} 1\{{y^{(i)} = j}\} logp^{(i)}_j]$
