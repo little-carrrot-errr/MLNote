@@ -53,7 +53,7 @@ Dropout可以防止网络变得过于依赖任何一个(或任何小的组合)�
 - [91]提出了一种自适应Dropout方法，其中每个隐变量的Dropout概率是使用一个与深度网络共享参数的**binary belief network** (?)计算的。
 
 ## **贝叶斯网络**
-s[**参考**](https://blog.csdn.net/gdp12315_gu/article/details/50002195)
+[**参考**](https://blog.csdn.net/gdp12315_gu/article/details/50002195)
 
 - 在[92]中，他们发现在1×1卷积层之前应用标准的Dropout通常会增加训练时间，并且不能防止过度拟合。因此，他们提出了一种新的Dropout方法，称为SpatialDropout。 退出，它将Dropout值扩展到整个特征映射（feature map）。这种新的Dropout方法在训练数据小的情况下效果很好。
 
