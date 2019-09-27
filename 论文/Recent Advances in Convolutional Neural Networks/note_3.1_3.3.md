@@ -21,7 +21,7 @@
   - [**L_p Pooling**](#lp-pooling)
   - [<b>Mixed Pooling</b>](#bmixed-poolingb)
   - [<b>Stochastic Pooling</b>](#bstochastic-poolingb)
-  - [<b>Spectral Pooling</b>](#bspectral-poolingb)
+  - [<b>Spectral(光谱) Pooling</b>](#bspectral%e5%85%89%e8%b0%b1-poolingb)
   - [**Spatial Pyramid Pooling**](#spatial-pyramid-pooling)
   - [<b>Multi-scale Orderless Pooling</b>](#bmulti-scale-orderless-poolingb)
   - [**VLAD && BoW && Fisher Vector && Global CNN**](#vlad--bow--fisher-vector--global-cnn)
@@ -191,6 +191,8 @@ conventional 的卷积层 可以认为是linear model , 为什么呢，因为 �
   
   当p=1时，此方法等于average pooling，；当$p=\infty$时，该方法等价于max pooling
 
+<br>
+
   ---
 ## <b>Mixed Pooling</b>
   
@@ -199,17 +201,24 @@ conventional 的卷积层 可以认为是linear model , 为什么呢，因为 �
    $\lambda$为0或者1，当$\lambda$为1时，该方法为max pooling；当$\lambda$为0时，该方法average pooling；在前向传播过程中，$\lambda$值会被记录下来，以便后期后向传播计算使用。Experiments in [46] show that mixed pooling can better address the overfitting problems and it
 performs better than max pooling and average pooling.
 
+<br>
+
 ---
 ## <b>Stochastic Pooling</b>
     
   首先通过归一化区域内的激活函数来计算每个区域j的概率p：
-  ><font size=4px> $p_i = \frac{a_i}{\sum_{k \in R_j} a_k}$</font>
+  ><font size=5px> $p_i = \frac{a_i}{\sum_{k \in R_j} a_k}$</font>
 
   然后基于p的多项式分布，在区域中抽取一个位置l。合并的激活仅仅是$a_l : s_j =a_l \quad l\sim P(p_1,...,p_{|R_j|})\quad$ ，过程如下图: 
-![](img\stochastic_pooling.jpg)
+  ![](img\stochastic_pooling.jpg)
+  
   随机池化具有最大池化的优点（消除非极大值，降低了上层的计算复杂度），同时由于随机性它能够避免过拟合。
 
-## <b>Spectral Pooling</b>
+<br>
+
+---
+
+## <b>Spectral(光谱) Pooling</b>
     
   通过裁剪输入频域的表达来减少维度。
   对于输入特征映射$x \in R^{m × m}$，假设期望输出为$h × w$：
@@ -221,6 +230,11 @@ performs better than max pooling and average pooling.
   - 通过低通filtering操作，对于同样的输出，谱池化能保留更多信息
   - 同时，它也不受其他池方法所显示的输出映射维数急剧下降的影响
   - 此外，频谱池的过程是通过矩阵截断实现的，这使得它能够在使用FFT【快速傅里叶变换 (fast Fourier transform)】处理卷积核的CNNs中以很少的计算成本实现。
+
+<br>
+
+---
+
 ## **Spatial Pyramid Pooling**
     
   [参考](https://www.cnblogs.com/zongfa/p/9076311.html)
@@ -229,14 +243,19 @@ performs better than max pooling and average pooling.
   图像的纵横比(ratio aspect) 和 输入图像的尺寸是被改变的。这样就会扭曲原始的图像。而Kaiming He在这里提出了一个SPP(Spatial Pyramid Pooling)层能很好的解决这样的问题， 但SPP通常连接在最后一层卷基层
   ![](\img/spatial_pyramid_pooliing.png)
 
-    **SPP 显著特点**
+  
+**SPP 显著特点**
   1) 不管输入尺寸是怎样，SPP 可以产生固定大小的输出 
   2) 使用多个窗口(pooling window)，窗口的数量取决于输入的大小
   3) SPP 可以使用同一图像不同尺寸(scale)作为输入, 得到同样长度的池化特征。
   4) SPP 对于特定的CNN网络设计和结构是独立的。(也就是说，只要把SPP放在最后一层卷积层后面，对网络的结构是没有影响的， 它只是替换了原来的pooling层) 
    ![](img/Spatial_Pyramid_Pooling_Layer.png)
 
-    注意我们上面曾提到使用多个窗口(pooling窗口，上图中蓝色，青绿，银灰的窗口， 然后对feature maps 进行pooling），将分别得到的结果进行合并就会得到固定长度的输出), 这就是得到固定输出的秘密原因。  
+  注意我们上面曾提到使用多个窗口(pooling窗口，上图中蓝色，青绿，银灰的窗口， 然后对feature maps 进行pooling），将分别得到的结果进行合并就会得到固定长度的输出), 这就是得到固定输出的秘密原因。  
+
+<br>
+
+---
 
 ## <b>Multi-scale Orderless Pooling</b>
   
