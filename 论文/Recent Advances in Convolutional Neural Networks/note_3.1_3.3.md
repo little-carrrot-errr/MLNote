@@ -190,6 +190,8 @@ conventional 的卷积层 可以认为是linear model , 为什么呢，因为 �
   <font size=4px>$y_{i,j,k} = [ \sum_{(m,n) \in R_{i,j}} (a_{m,n,k})^p ]^{1/p}$</font>
   
   当p=1时，此方法等于average pooling，；当$p=\infty$时，该方法等价于max pooling
+
+  ---
 ## <b>Mixed Pooling</b>
   
    <font size=4px>$y_{i,j,k} = \lambda \max_{(m,n)\in R_{i,j}} a_{m,n,k} +(1-\lambda) \frac{1}{|R_{ij}|} \sum_{(m,n \in R_{i,j})} a_{m,n,k}$</font>
@@ -197,6 +199,7 @@ conventional 的卷积层 可以认为是linear model , 为什么呢，因为 �
    $\lambda$为0或者1，当$\lambda$为1时，该方法为max pooling；当$\lambda$为0时，该方法average pooling；在前向传播过程中，$\lambda$值会被记录下来，以便后期后向传播计算使用。Experiments in [46] show that mixed pooling can better address the overfitting problems and it
 performs better than max pooling and average pooling.
 
+---
 ## <b>Stochastic Pooling</b>
     
   首先通过归一化区域内的激活函数来计算每个区域j的概率p：
