@@ -261,14 +261,16 @@ performs better than max pooling and average pooling.
   
   [参考1](https://blog.csdn.net/qq_32417287/article/details/80372422)
   [参考2](https://blog.csdn.net/happyer88/article/details/51418059)
+
+  ![](https://img-blog.csdn.net/20180519153509621?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzMyNDE3Mjg3/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
   - 解决问题：在保证CNN特征的区分能力的同时，提高CNN特征的对各种不变性的鲁棒性。
-  - 解决思路：利用多尺度无序池(MOP)在不降低CNNs区分能力的前提下，提高了CNNs的不变性。在不同尺度上的局部 patch 上提取CNN特征，在不同尺度上分别对其进行无序的VLAD池化操作，将不同尺度上的池化之后的特征连接起来形成最终的特征
+  - 解决思路：利用多尺度无序池(MOP)在不降低CNNs区分能力的前提下，提高了CNNs的不变性。在不同尺度上的局部 patch 上提取CNN特征，在不同尺度上分别对其进行无序的**VLAD池化**操作，将不同尺度上的池化之后的特征连接起来形成最终的特征
   - 为什么滑窗呢？
     如果region取得稍有不对（离目标有所偏差），根据patch CNN预测的图像label也会错的离谱。
 
 ## **VLAD && BoW && Fisher Vector && Global CNN**
 
-
+<br>
 
 # **Activation Function**
 ## **激活函数的饱和性**
@@ -279,11 +281,12 @@ performs better than max pooling and average pooling.
 - 对任意x如果存在c，使得$x<c$恒有h'(x)=0则称其为**左硬饱和**
 
 ## **ReLU**
-- 它是一个非常显著的非饱和激活函数
+- 它是一个非常显著的非饱和(**non-saturated**)激活函数
   >$a_{i,j,k}=max(z_{i,j,k},0)$
 - max操作使得此函数比$sigmoid \quad tech$函数计算效率更高
 - 它还在隐单元中引入稀疏性，使网络易于获得稀疏表示
 - 尽管$relu$在0处的不连续性可能会影响反向传播的性能，但许多工作表明，在经验上，relu比Sigmoid和tanh激活函数工作得更好。
+  
   ![](img/ReLu.png)
 - NN中常用。对正数原样输出，负数直接置零。在正数不饱和，在负数硬饱和。relu计算上比sigmoid或者tanh更省计算量，因为不用exp，因而收敛较快。但是还是非zero-centered
 - relu在负数区域被kill的现象叫做**dead relu**。这会使得一些没被激活的神经元永远不会改变他们的权重，并且也可能给降低悬链效率。这样的情况下，有人通过初始化的时候用一个稍微大于零的数比如0.01来初始化神经元，从而使得relu更偏向于激活而不是死掉，但是这个方法是否有效有争议
@@ -294,6 +297,8 @@ performs better than max pooling and average pooling.
     对比大脑工作的95%稀疏性来看，现有的计算神经网络和生物神经网络还是有很大差距的。庆幸的是，ReLu只有负值才会被稀疏掉，即引入的稀疏性是可以训练调节的，是动态变化的。只要进行梯度训练，网络可以向误差减少的方向，自动调控稀疏比率，保证激活链上存在着合理数量的非零值。
 
 
+---
+
 ## **Leaky ReLU**
 
 为了克服$ReLu$在负轴0梯度的问题，$Leaky ReLu$被提出来了。
@@ -303,6 +308,9 @@ performs better than max pooling and average pooling.
 
 在负轴部分引入非0梯度 
 
+
+---
+
 ## **Parametric ReLU**
 
 提出自适应学习的参数来提高准确性
@@ -310,6 +318,9 @@ performs better than max pooling and average pooling.
 
 - 使用backpropagation训练
 - 训练参数与通道数相同，因此训练成本可以忽略不计
+
+
+---
 
 ## **Randomized ReLU**
 不同于PReLU，RReLU在负轴的参数是在训练中从均匀分布中随机抽样得来并在训练中逐渐固定下来的
@@ -321,15 +332,21 @@ performs better than max pooling and average pooling.
   
   ![](/img/ReLU_Family.png)
 
+---
+
 
 ## **ELU**
-- 类似ReLU,PReLU,RReLU,ELU也通过设计正轴部分斜率为固定值来避免梯度消失
+- 类似ReLU、PReLU、RReLU，ELU也通过设计正轴部分斜率为固定值来避免梯度消失
 - 但不同于ReLU，ELU有 利于快速训练的负部分
 - 不同于LReLU,PReLU,RReLU使用非饱和负部分，ELU使用饱和函数作为负部分(计算量上也大一些)
 - **由于饱和函数会减少单元在失活时的变化，使得ELU对噪声的鲁棒性更强**
 > $a_{i,j,k} = max(z_{i,j,k}, 0) + λ_k min(\lambda(e^{z_i,j,k}), 0)$
 
 ![](\img/ELU.png)
+
+
+---
+<br>
 
 ## **Maxout**
 maxout是通过分段线性函数来拟合所有可能的凸函数来作为激活函数的，但是由于线性函数是可学习，所以实际上是可以学出来的激活函数。具体操作是对所有线性取最大，也就是把若干直线的交点作为分段的界，然后每一段取最大。
@@ -344,9 +361,10 @@ $h_i(x)=\text{sigmoid}(x^TW_{…i}+b_i)$
 其中$z_{ij}=x^TW_{…ij}+b_{ij}, W\in R^{d\times m\times k}$
 
 - 以下最简单的多层感知机为例：
-![](/img/maxout.png)
 
-假设网络第i层有2个神经元x1、x2，第i+1层的神经元个数为1个.原本只有一层参数,将ReLU或sigmoid等激活函数替换掉,引入Maxout,将变成两层参数,参数个数增为k倍.
+![](\img/maxout.png)
+
+假设网络第i层有2个神经元x1、x2，第i+1层的神经元个数为1个。原本只有一层参数,将ReLU或sigmoid等激活函数替换掉,引入Maxout,将变成两层参数,参数个数增为k倍.
 
 优点：
 - Maxout的拟合能力非常强，可以拟合任意的凸函数。
@@ -377,7 +395,7 @@ $probout$把$maxout$最后取最大值的操作替换为按照概率取值。
 
 然后，根据多项式分布{p1，.，pk}选择一个k个单元，并将激活值设置为所选单元的
 
-为了融入dropout，他们重新定义概率：$p'_0=0.5 \quad p'z_i = e^{λz_i}/2.(\sum^k_{j=1}e^{λz_j})$
+为了融入dropout，他们重新定义概率：$p'_0=0.5 \quad p'_i = e^{λz_i}/2.(\sum^k_{j=1}e^{λz_j})$
 
 激活函数的取样为：$a_i=\left\{
 \begin{aligned}
@@ -387,7 +405,7 @@ z_i ,& & else \\
 \right. \qquad$
 i ∼ multinomial{pˆ0, ..., pˆk}.
 
-PROBUT可以在保持maxout的理想性质和改善它们的不变性之间取得平衡。
+PROBUT可以在保持maxout的理想性质和改善它们的不变性之间取得平衡。但在实际的计算中，PROBOUT的计算花费比Maxout要高得多。、
 
 
 ## **sigmoid && tanh**
@@ -398,7 +416,7 @@ PROBUT可以在保持maxout的理想性质和改善它们的不变性之间取�
 
 tanh 函数是sigmoid函数的一种变体，以0点为中心。取值范围为 [-1,1] ，而不是sigmoid函数的 [0,1] $\tanh(x) ={e^x-e^{-x}\over e^x+e^{-x}}$
 
->tanh 是对 sigmoid 的平移和收缩: $\tanh \left( x \right) = 2 \cdot sigma \left(2 x \right) - 1$.
+>tanh 是对 sigmoid 的平移和收缩: $\tanh \left( x \right) = 2 \cdot sigmoid \left(2 x \right) - 1$.
 
 你可能会想平移使得曲线以0点为中心,那么为什么还要收缩呢? 如果不拉伸或收缩得到 $(f(x)={e^x-1\over e^x+1})$ 不行吗? 我猜想是因为 tanh 更加著名吧。
 
@@ -431,7 +449,7 @@ tanh 函数是sigmoid函数的一种变体，以0点为中心。取值范围为 
 >
 > 1. 梯度消失问题程度
 > 
-> $\qquad tanh′(x)=1−tanh(x) \quad 2∈(0,1)$
+> $\qquad tanh′(x)=1−tanh(x) \quad ∈(0,1)$
 >
 > $\qquad sigmoid: s′(x)=s(x)×(1−s(x))∈(0,1/4)$
 >

@@ -117,6 +117,6 @@ SGD方法可能不会导致收敛。当性能停止改善时，可以终止训�
 - 随机深度ResNets（**Stochastic Depth ResNets**）随机丢弃一个层的子集，并使用 **identity mapping**在mini-batch 绕过它们。通过结合随机深度Resnet和Dropout，Singh等。[126]提出了随机深度的dropout和网络，可以看作是Resnet、Dropout和Stochastic Depth ResNets的集合
 - **The Resnet in ResNets\RIR**论文[127]中的描述了一种将经典卷积网络和残差网络结合在一起的体系结构，其中每个RIR块包含残差单元和非残差块。RIR可以学习每个残差块应该使用多少卷积层。
 - **ResNets of ResNets\RoR**[128]是对ResNets体系结构的修改，它建议使用多级shortcut connections，而不是先前工作中的单层connection
--  **DenseNet [129]**可以被看作是一种将skip connection的洞察力带到了极致的架构。结构中每层的输出连接到其所有后续层
+-  **DenseNet**[129]可以被看作是一种将skip connection的洞察力带到了极致的架构。结构中每层的输出连接到其所有后续层
 
 在所有的ResNets[12，123]，Highway[122]和inception network[42]，我们可以看到一个相当明显的趋势：使用skip connection以帮助训练非常深的网络。

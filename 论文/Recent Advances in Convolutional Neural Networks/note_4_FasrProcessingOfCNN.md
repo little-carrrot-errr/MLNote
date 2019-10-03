@@ -41,6 +41,8 @@ Mathieu等人[49]用FFT在傅里叶域进行卷积运算。
 - Denton[137]和Jaderberg等人[138]在[136]的启发下证明了深层神经网络中卷积核的冗余性，并提出了近似器 **approximations** 减少所需的计算量。
 -  Novikov 等人[139]推广低秩思想，将权矩阵看作多维张量，并应用张量列分解 **Tensor-Train decomposition** [140]来减少全连通的参数
 
+[张量分解](https://blog.csdn.net/yixianfeng41/article/details/73009210)
+
 **自适应fastfood变换 \ Adaptive Fastfood transform**是对矩阵逼近的**Fastfood transform**[141]的推广。在全连接层的 **Adaptive Fastfood transformation**的权重矩阵表示如下:
 > $Cx=(\widetilde{D_1}H\widetilde{D_2} \Pi H\widetilde{D_3})x$
 >  
