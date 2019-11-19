@@ -6,12 +6,12 @@
 
 可能有的忘记标记出处了，要是发现了麻烦大佬们提醒一下我( • ̀ω•́ )✧
 
-- 笔记：一些机器学习的理论基础、python笔记、之后可能会补充各类框架笔记
-- 论文： 
+- Note：一些机器学习的理论基础、python笔记、之后可能会补充各类框架笔记
+- PaperFromTJU： 
   - Recent Advances in Convolutional Neural Networks：之前胡老师给的一篇卷积网络综述的相关笔记
-- 目标检测：
-  - 笔记：在LDSW学习的目标检测相关的笔记
-  - 论文：目标检测相关的论文
-- 火焰检测： 看了一点关于火焰检测的论文&综述
+- ObjectDetection：
+  - Note：在LDSW学习的目标检测相关的笔记
+  - Paper：目标检测相关的论文
+- FireDetection： 看了一点关于火焰检测的论文&综述
 
 
